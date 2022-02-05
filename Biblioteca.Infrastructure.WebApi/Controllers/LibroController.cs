@@ -32,8 +32,8 @@ namespace Biblioteca.Infrastructure.WebApi.Controllers
         }
 
         // POST api/<LibroController>
-        [ProducesResponseType(StatusCodes.Status201Created)]    /* 201 => Created */
-        [ProducesResponseType(StatusCodes.Status400BadRequest)] /* 400 => BadRequest */
+        [ProducesResponseType(StatusCodes.Status201Created)]    /* 201 => Created */ //
+        [ProducesResponseType(StatusCodes.Status400BadRequest)] /* 400 => BadRequest */ //
         [HttpPost]
         public async Task<ActionResult<RegistrarLibroResponse>> Post(RegistrarLibroRequest request)
         {
@@ -51,7 +51,6 @@ namespace Biblioteca.Infrastructure.WebApi.Controllers
                 return BadRequest(new { Messages = new List<string> { "Error inesperado en el sistema" } });
             }
         }
-
 
     }
 }
