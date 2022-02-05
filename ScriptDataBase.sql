@@ -1,6 +1,6 @@
 ﻿USE [master]
 GO
-
+ 
 /****** Object:  Database [BibliotecaNexos]    Script Date: 5/02/2022 4:25:41 p. m. ******/
 CREATE DATABASE [BibliotecaNexos]
 Go 
