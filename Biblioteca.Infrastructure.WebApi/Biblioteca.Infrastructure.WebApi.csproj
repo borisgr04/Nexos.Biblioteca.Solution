@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.13">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+	  <PackageReference Include="Scrutor" Version="3.2.1" />
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Biblioteca.Core.Application\Biblioteca.Core.Application.csproj" />
+    <ProjectReference Include="..\Biblioteca.Core.Domain\Biblioteca.Core.Domain.csproj" />
+    <ProjectReference Include="..\Biblioteca.Infrastructure.Data\Biblioteca.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+</Project>
