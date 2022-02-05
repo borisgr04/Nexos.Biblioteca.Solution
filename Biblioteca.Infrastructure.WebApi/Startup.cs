@@ -53,6 +53,9 @@ namespace Biblioteca.Infrastructure.WebApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Biblioteca.Infrastructure.WebApi", Version = "v1" });
             });
+
+            
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -72,6 +75,8 @@ namespace Biblioteca.Infrastructure.WebApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {

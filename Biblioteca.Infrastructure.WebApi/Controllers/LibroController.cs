@@ -23,6 +23,14 @@ namespace Biblioteca.Infrastructure.WebApi.Controllers
             _mediator = mediator;
         }
 
+        [Produces("application/json", Type = typeof(IEnumerable<LibroDto>))]
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            var response = await _mediator.Send(new ConsultarLibrosRequest());
+            return Ok(response.Libros);
+        }
+
         // POST api/<LibroController>
         [ProducesResponseType(StatusCodes.Status201Created)]    /* 201 => Created */
         [ProducesResponseType(StatusCodes.Status400BadRequest)] /* 400 => BadRequest */
