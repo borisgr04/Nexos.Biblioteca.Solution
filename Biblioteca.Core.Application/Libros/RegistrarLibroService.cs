@@ -18,7 +18,7 @@ namespace Biblioteca.Core.Application.Libros
         }
         public async Task<RegistrarLibroResponse> Handle(RegistrarLibroRequest request, CancellationToken cancellationToken)
         {
-            ValidateModel validate = Validar(request);
+            ValidateModel validate = await ValidarAsync(request);
 
             if (!validate.IsValid)
             {
@@ -41,7 +41,7 @@ namespace Biblioteca.Core.Application.Libros
             return new RegistrarLibroResponse($"Se realizó la operación satisfactoriamente. Registros afectados {filas}");
         }
 
-        private ValidateModel Validar(RegistrarLibroRequest request)
+        private async Task<ValidateModel> ValidarAsync(RegistrarLibroRequest request)
         {
             var validate = new ValidateModel();
             validate.TryValidateObject(request);
@@ -50,7 +50,7 @@ namespace Biblioteca.Core.Application.Libros
             {
                 validate.AddError("El autor no está registrado.");
             }
-            var editorial = _unitOfWork.GenericRepository<Editorial>().Find(request.EditorialId);
+            var editorial = await _unitOfWork.EditorialRepository.FindIncludeLibroAsync(request.EditorialId);
             if (editorial == null)
             {
                 validate.AddError("La editorial no está registrada.");
