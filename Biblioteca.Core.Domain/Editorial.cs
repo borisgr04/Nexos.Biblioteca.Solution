@@ -16,11 +16,11 @@ namespace Biblioteca.Core.Domain
         public string CorreoElectronico { get; init; }
         public int MaximoLibrosRegistrados { get; init; }
         public int LibroRegistrados => Libros.Count;
-        
+
         private readonly List<Libro> _libros;
         public IReadOnlyCollection<Libro> Libros => _libros.AsReadOnly();
 
-        public bool TieneDisponibilidadDeRegistro() => MaximoLibrosRegistrados != -1 && MaximoLibrosRegistrados == LibroRegistrados;
+        public bool TieneDisponibilidadDeRegistro() => (MaximoLibrosRegistrados == -1) || (MaximoLibrosRegistrados != -1 &&  LibroRegistrados < MaximoLibrosRegistrados);
         
     }
 

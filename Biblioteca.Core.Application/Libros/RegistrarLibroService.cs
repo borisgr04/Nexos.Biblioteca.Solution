@@ -55,7 +55,7 @@ namespace Biblioteca.Core.Application.Libros
             {
                 validate.AddError("La editorial no está registrada.");
             }
-            if (editorial != null && editorial.TieneDisponibilidadDeRegistro())
+            if (editorial != null && !editorial.TieneDisponibilidadDeRegistro())
             {
                 validate.AddError($"No es permitido registrar más libros en la Editarial {editorial.Nombre}. La editorial tiene {editorial.MaximoLibrosRegistrados} máximo de libros para registrar.");
             }
